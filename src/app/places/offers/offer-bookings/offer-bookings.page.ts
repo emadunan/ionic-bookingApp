@@ -24,7 +24,6 @@ export class OfferBookingsPage implements OnInit {
         this.navCtl.navigateBack(`/places/tabs/offers`);
         return;
       }
-      console.log(paramMap);
       this.place = this.placesService.getPlace(paramMap.get('placeId'));
     } );
   }

@@ -1,10 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Authenticate</ion-title>
+    <ion-title>{{ isLogin? 'Login' : 'Signup'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <!-- <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner> -->
-  <ion-button color="primary" (click)="onLogin()">LOGIN</ion-button>
+<ion-content class="padding">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" ngModel name="email" required email #emailCtrl="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!emailCtrl.valid && emailCtrl.touched" lines="none">
+        <p style="color: #eb445a;">Should be a valid e-mail address!</p>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" ngModel name="password" required minlength="4" #passCtrl="ngModel"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="!passCtrl.valid && passCtrl.touched" lines="none">
+        <p style="color: #eb445a;">Should be a valid password!</p>
+      </ion-item>
+    </ion-list>
+    <!-- <ion-spinner color="primary" *ngIf="isLoading"></ion-spinner> -->
+    <ion-button type="button" color="primary" fill="clear" expand="full" (click)="onSwitch()">Switch to {{ isLogin? 'Signup' : 'Login' }}</ion-button>
+    <ion-button type="submit" color="primary" expand="block" [disabled]="!f.valid" (click)="onLogin()">{{ isLogin? 'LOGIN' : 'SIGNUP'}}</ion-button>
+  </form>
 </ion-content>

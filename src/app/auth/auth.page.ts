@@ -29,11 +29,8 @@ export class AuthPage implements OnInit {
     .create({keyboardClose: true, message: 'Loading in...'})
     .then(loadingEl => {
       loadingEl.present();
-      setTimeout( () => {
-      //  this.isLoading = false;
-        loadingEl.dismiss();
-        this.router.navigateByUrl(`/places/tabs/discover`);
-      }, 2000);
+      loadingEl.dismiss();
+      this.router.navigateByUrl(`/places/tabs/discover`);
     });
   }
 

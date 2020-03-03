@@ -9,9 +9,9 @@
     </div>
     <div class="offer-details">
       <ion-icon name="calendar" color="secondary"></ion-icon>
-      <ion-text color="primary" class="space-left">{{ getDummyDate() | date }}</ion-text>
+      <ion-text color="primary" class="space-left">{{ offerItm.availableFrom | date }}</ion-text>
       <span class="space-left">to</span>
-      <ion-text color="primary" class="space-left">{{ getDummyDate() | date }}</ion-text>
+      <ion-text color="primary" class="space-left">{{ offerItm.availableTo | date }}</ion-text>
     </div>
   </ion-label>
 </ion-item>
